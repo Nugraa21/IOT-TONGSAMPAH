@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peta Lokasi Tong Sampah</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map { height: 500px; }
+    .status-full { color: red; font-weight: bold; }
+    .status-empty { color: green; font-weight: bold; }
+    .leaflet-popup-content {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .marker-full {
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 5px;
+    }
+    .marker-empty {
+      background-color: green;
+      color: white;
+      border-radius: 50%;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <div id="statusTongSampah1">Status: Kosong</div>
+  <div id="statusTongSampah2">Status: Kosong</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+  <script>
+    // Lokasi tong sampah
+    const lokasiTongSampah1 = [-7.82062992849643, 110.42654669574745];
+    const lokasiTongSampah2 = [-7.820135382837104, 110.42666630956253];
+
+    // Inisialisasi peta
+    const map = L.map('map').setView([-7.8204, 110.4266], 16); // Pusat peta
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Menambahkan marker untuk tong sampah
+    const markerTongSampah1 = L.marker(lokasiTongSampah1, {
+      icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
+    }).addTo(map)
+      .bindPopup('Tong Sampah 1')
+      .openPopup();
+
+    const markerTongSampah2 = L.marker(lokasiTongSampah2, {
+      icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
+    }).addTo(map)
+      .bindPopup('Tong Sampah 2');
+
+    // Inisialisasi MQTT
+    const client = mqtt.connect('ws://broker.mqttdashboard.com:8000/mqtt');
+
+    client.on('connect', function () {
+      console.log('MQTT Connected');
+      client.subscribe('tong_sampah_1/status');
+      client.subscribe('tong_sampah_2/status');
+    });
+
+    client.on('message', function (topic, message) {
+      const status = message.toString();
+      
+      if (topic === 'tong_sampah_1/status') {
+        const statusElement = document.getElementById('statusTongSampah1');
+        statusElement.textContent = 'Status: ' + status;
+        if (status === 'Sudah Penuh') {
+          statusElement.classList.add('status-full');
+          statusElement.classList.remove('status-empty');
+          markerTongSampah1.bindPopup('Tong Sampah 1 Penuh').openPopup();
+          markerTongSampah1.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
+          playAlertSound();
+        } else {
+          statusElement.classList.add('status-empty');
+          statusElement.classList.remove('status-full');
+          markerTongSampah1.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
+        }
+      }
+
+      if (topic === 'tong_sampah_2/status') {
+        const statusElement = document.getElementById('statusTongSampah2');
+        statusElement.textContent = 'Status: ' + status;
+        if (status === 'Sudah Penuh') {
+          statusElement.classList.add('status-full');
+          statusElement.classList.remove('status-empty');
+          markerTongSampah2.bindPopup('Tong Sampah 2 Penuh').openPopup();
+          markerTongSampah2.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
+          playAlertSound();
+        } else {
+          statusElement.classList.add('status-empty');
+          statusElement.classList.remove('status-full');
+          markerTongSampah2.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
+        }
+      }
+    });
+
+    // Fungsi untuk memutar suara alert
+    function playAlertSound() {
+  const audio = new Audio('pilager.mp3');
+  audio.play();
+}
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Monitoring Tong Sampah</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" />
+  <style>
+    /* Gaya umum untuk halaman */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffd5d5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      box-sizing: border-box;
+    }
+
+    /* Header */
+    header {
+      background-color: #ff9393;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    /* Gaya untuk status */
+    .status {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .status:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .status h3 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    .status p {
+      margin: 10px 0;
+    }
+
+    /* Status dengan kategori */
+    .status.penuh {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+    }
+
+    .status.hampir-penuh {
+      background-color: #fff3cd;
+      border-color: #ffeeba;
+      color: #856404;
+    }
+
+    .status.kosong {
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+    }
+
+    /* Map container */
+    .map-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    #map {
+      width: 100%;
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      .status {
+        font-size: 16px;
+        padding: 15px;
+      }
+
+      #map {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <main style=" margin: 1rem; padding: 0px; border: 4px solid #ff8e8e; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.361);">
+  <header>
+    <h1>Monitoring lokasi sampah yang penuh</h1>
+  </header>
+
+  <div class="container" style="display: flex; width: 100%; justify-content: center; align-items: center;">
+    <!-- Status Tong Sampah 1 -->
+    <div class="status" id="status1">
+      <h3><i class="fa fa-trash" aria-hidden="true"></i> Lokasi: Tong Sampah 1</h3>
+      <p>Status: <span id="status1-text">Kosong</span></p>
+    </div>
+
+    <!-- Status Tong Sampah 2 -->
+    <div class="status" id="status2">
+      <h3><i class="fa fa-trash" aria-hidden="true"></i> Lokasi: Tong Sampah 2</h3>
+      <p>Status: <span id="status2-text">Kosong</span></p>
+    </div>
+  </div>
+
+  <div class="map-container">
+    <h2><i class="fa fa-map-marker" aria-hidden="true"></i> Peta Lokasi Tong Sampah</h2>
+    <div id="map"></div>
+  </div>
+</main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+  <script>
+    // Lokasi Tong Sampah
+    const lokasiTongSampah1 = [-7.82062992849643, 110.42654669574745];
+    const lokasiTongSampah2 = [-7.820135382837104, 110.42666630956253];
+
+    // Membuat Peta
+    const map = L.map('map').setView([-7.8205, 110.4266], 16);
+
+    // Menambahkan layer peta
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Menambahkan Marker untuk Tong Sampah 1
+    const marker1 = L.marker(lokasiTongSampah1).addTo(map);
+    marker1.bindPopup(`
+      <strong>Lokasi: Tong Sampah 1</strong><br>
+      Alamat: Jl. Contoh No. 1, RT. 01/RW. 02<br>
+      Pemilik Rumah: Budi Setiawan
+    `);
+
+    // Menambahkan Marker untuk Tong Sampah 2
+    const marker2 = L.marker(lokasiTongSampah2).addTo(map);
+    marker2.bindPopup(`
+      <strong>Lokasi: Tong Sampah 2</strong><br>
+      Alamat: Jl. Contoh No. 2, RT. 03/RW. 01<br>
+      Pemilik Rumah: Siti Nurhasanah
+    `);
+
+    // Fungsi untuk mengupdate status dan peta
+    function updateStatus(tong, status) {
+      if (tong === 1) {
+        document.getElementById('status1-text').innerText = status;
+        if (status === 'Sudah Penuh') {
+          marker1.bindPopup(`
+            <strong>Lokasi: Tong Sampah 1</strong><br>
+            Alamat: Jl. Contoh No. 1, RT. 01/RW. 02<br>
+            Pemilik Rumah: Budi Setiawan<br>
+            Status: Penuh
+          `);
+          marker1.openPopup();
+          document.getElementById('status1').classList.add('penuh');
+        } else if (status === 'Hampir Penuh') {
+          document.getElementById('status1').classList.add('hampir-penuh');
+        } else {
+          document.getElementById('status1').classList.add('kosong');
+        }
+      } else if (tong === 2) {
+        document.getElementById('status2-text').innerText = status;
+        if (status === 'Sudah Penuh') {
+          marker2.bindPopup(`
+            <strong>Lokasi: Tong Sampah 2</strong><br>
+            Alamat: Jl. Contoh No. 2, RT. 03/RW. 01<br>
+            Pemilik Rumah: Siti Nurhasanah<br>
+            Status: Penuh
+          `);
+          marker2.openPopup();
+          document.getElementById('status2').classList.add('penuh');
+        } else if (status === 'Hampir Penuh') {
+          document.getElementById('status2').classList.add('hampir-penuh');
+        } else {
+          document.getElementById('status2').classList.add('kosong');
+        }
+      }
+    }
+
+    // Simulasi pengubahan status berdasarkan data (misal dari MQTT)
+    setTimeout(() => updateStatus(1, 'Sudah Penuh'), 5000);  // Setelah 5 detik
+    setTimeout(() => updateStatus(2, 'Hampir Penuh'), 10000);  // Setelah 10 detik
+  </script>
+</body>
+</html>

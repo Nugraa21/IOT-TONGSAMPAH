@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring Tong Sampah</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ff6347;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+
+    header {
+      background-color: #c74d35;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px;
+    }
+
+    .info {
+      width: 30%;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+      border-radius: 10px;
+    }
+
+    .map-container {
+      width: 65%;
+      height: 400px;
+    }
+
+    .status {
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #c74d35;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .status-full {
+      background-color: #ff0000;
+    }
+
+    .status-empty {
+      background-color: #2e8b57;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Monitoring Status Tong Sampah</h1>
+  </header>
+
+  <div class="container">
+    <div class="info">
+      <h2>Status Tong Sampah</h2>
+      <div id="statusTongSampah1" class="status">Menunggu status...</div>
+      <div id="statusTongSampah2" class="status">Menunggu status...</div>
+    </div>
+    <div id="map" class="map-container"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mqtt@4.3.7/dist/mqtt.min.js"></script>
+  <script>
+    // Lokasi tong sampah
+    const lokasiTongSampah1 = [-7.82062992849643, 110.42654669574745];
+    const lokasiTongSampah2 = [-7.820135382837104, 110.42666630956253];
+
+    // Inisialisasi peta
+    const map = L.map('map').setView([-7.8204, 110.4266], 16); // Pusat peta
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Menambahkan marker untuk tong sampah
+    const markerTongSampah1 = L.marker(lokasiTongSampah1).addTo(map)
+      .bindPopup('Tong Sampah 1')
+      .openPopup();
+
+    const markerTongSampah2 = L.marker(lokasiTongSampah2).addTo(map)
+      .bindPopup('Tong Sampah 2');
+
+    // Inisialisasi MQTT
+    const client = mqtt.connect('ws://broker.mqttdashboard.com:8000/mqtt');
+
+    client.on('connect', function () {
+      console.log('MQTT Connected');
+      client.subscribe('tong_sampah_1/status');
+      client.subscribe('tong_sampah_2/status');
+    });
+
+    client.on('message', function (topic, message) {
+      const status = message.toString();
+      
+      if (topic === 'tong_sampah_1/status') {
+        const statusElement = document.getElementById('statusTongSampah1');
+        statusElement.textContent = 'Status: ' + status;
+        if (status === 'Sudah Penuh') {
+          statusElement.classList.add('status-full');
+          statusElement.classList.remove('status-empty');
+          markerTongSampah1.bindPopup('Tong Sampah 1 Penuh').openPopup();
+        } else {
+          statusElement.classList.add('status-empty');
+          statusElement.classList.remove('status-full');
+        }
+      }
+
+      if (topic === 'tong_sampah_2/status') {
+        const statusElement = document.getElementById('statusTongSampah2');
+        statusElement.textContent = 'Status: ' + status;
+        if (status === 'Sudah Penuh') {
+          statusElement.classList.add('status-full');
+          statusElement.classList.remove('status-empty');
+          markerTongSampah2.bindPopup('Tong Sampah 2 Penuh').openPopup();
+        } else {
+          statusElement.classList.add('status-empty');
+          statusElement.classList.remove('status-full');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

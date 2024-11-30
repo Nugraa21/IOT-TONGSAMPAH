@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <!-- !!!!!!!!!!!!!!!!!!!!!!! -->
+     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+
+    <!-- !!!!!!!!!!!!!!!!!!!!!!! -->
+    <!-- ---------- css ---------- -->
+    <link rel="stylesheet" href="assets/css/styles.css"> 
+    <link rel="stylesheet" href="assets/css/responsif.css">
+    <!-- ---------- icon ---------- -->
+     <link rel="icon" href="assets/media/icon/code.png">
+     <!-- ---------- Meta ---------- -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ---------- Title ---------- -->
+    <title>IOT-SAMPAH</title>
+</head>
+<body>
+<nav>
+<!-- ------------------------------------------------------------------------------------------- -->
+ <nav>
+
+ </nav>
+
+<div class="container">
+  <div class="info">
+    <h2><img width="30px" src="https://cdn-icons-png.flaticon.com/128/2514/2514330.png" alt=""> Status Tong Sampah</h2>
+    <!-- cart -->
+    <div class="cart-row">
+      <!-- rumah 1 -->
+      <div class="cart">
+        <div class="cart-data">
+          <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 1</h1>
+          <div class="cart-alamat">
+            <h4>alamat rumah </h4>
+            <p>5CHG+HMR, Sekarsuli, Sendangtirto, Kec. Berbah, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55573</p>
+          </div>
+        </div>
+        <div class="cart-status">
+          <div class="buttons">
+            
+            <button id="light-theme" onclick="location.href='https://maps.app.goo.gl/g2iWwM3xYWAd1wgC7'"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
+        </div>
+        
+          <div id="statusTongSampah1" class="status">Menunggu status...</div>
+        </div>
+      </div>
+      <!-- rumah 2 -->
+      <div class="cart">
+        <div class="cart-data">
+          <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 2</h1>
+          <div class="cart-alamat">
+            <h4>alamat rumah </h4>
+            <p>5CHG+HMR, Sekarsuli, Sendangtirto, Kec. Berbah, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55573</p>
+          </div>
+        </div>
+        <div class="cart-status">
+          <div class="buttons">
+            
+            <button id="light-theme" onclick="location.href='https://maps.app.goo.gl/2zHKCF3R3VQuNYzCA'"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
+        </div>
+          <div id="statusTongSampah2" class="status">Menunggu status...</div>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </div>
+  <!-- <div class="map-container"> -->
+      <!-- <h1>dat dat dat dat </h1> -->
+    <div id="map" class="map-container"></div>
+  <!-- </div> -->
+</div>
+
+<!-- ------------------------------------------------------------------------------------------- -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <!-- js  -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mqtt@4.3.7/dist/mqtt.min.js"></script>
+  <!-- js  -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/tema.js"></script>
+<!-- server -->
+<script>
+    const eventSource = new EventSource('http://localhost:3001/refresh');
+    eventSource.onmessage = () => {
+        location.reload();
+    };
+</script>
+
+</body>
+</html>
+
+<!-- Data ! -->
+<!-- <div class="container">
+    <h1>Nugra.template</h1>
+    <p>Template semantik code </p>
+    
+    <div class="buttons">
+        <button id="light-theme">Light Mode</button>
+        <button id="dark-theme">Dark Mode</button>
+    </div>
+</div> -->
