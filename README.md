@@ -1,5 +1,6 @@
 # IoT Tong Sampah Pintar
 
+[Tampilan dashboard](https://nugraa21.github.io/IOT-TONGSAMPAH/web/index.html)
 ## Instalasi
 
 1. Clone repositori:
