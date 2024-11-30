@@ -23,74 +23,51 @@
 /* General Styles */
 body {
   font-family: var(--font-family);
-  background-color: #ff6347;
+  background-color: #d7ffd9;
   margin: 0;
   padding: 0;
-  color: white;
+  color: var(--text-color);
 }
 
 header {
-  background-color: #c74d35;
+  background-color: #41c735;
   padding: 10px 0;
   text-align: center;
 }
 
 header h1 {
   font-size: 2em;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 2px;
 }
 
 /* Container Layout */
 .container {
-  padding-top: 30px;
   display: flex;
   justify-content: space-between;
-  margin: 20px;
-  flex-wrap: wrap;
+  /* gap: 20px; */
+  /* padding-top: 20px; */
+  margin: 0;
 }
 
-/* Info Box */
+/* Info Section */
 .info {
-  max-width: 100%;
-  width: 30%;
-  padding: 20px;
-  background-color: #f9f9f9;
+  width: 30%; /* Menyesuaikan ukuran agar map dan cart bisa berdampingan */
+  padding: 15px;
   color: #333;
-  border-radius: 10px;
+  box-sizing: border-box; /* Agar padding tidak merusak ukuran */
 }
+.info h2{
+  text-align: center;
+  align-items: center;
+  background-color: #1bd66962;
+  padding: 10px;
+  border-left: 2px solid black;
 
-.info h2 {
-  font-size: 35px;
-  border-bottom: 2px solid #c06250;
 }
 
 /* Map Container */
-.map-container {
-  width: 65%;
-  height: 830px;
-  border: 5px solid #c74d35;
-  border-radius: 20px;
-}
-
-/* Status Styles */
-.status {
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #c74d35;
-  color: white;
-  border-radius: 5px;
-}
-
-.status-full {
-  background-color: #ff0000;
-}
-
-.status-empty {
-  background-color: #2e8b57;
-  font-weight: bold;
-  color: green;
-}
-
-/* Marker Styles */
 .marker-full {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.687);
   background-color: red;
@@ -106,87 +83,136 @@ header h1 {
   border-radius: 50%;
   padding: 5px;
 }
+.map-container {
+  width: 75%; /* Map lebih lebar sedikit dibandingkan dengan info */
+  height: 830px; /* Sesuaikan tinggi agar proporsional */
+  border-right : 5px solid #7dff93;
+  border-bottom : 5px solid #88ff7d;
+  border-radius: 20px;
+}
+
+/* Status Styles */
+.status {
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #46c735;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.status-full {
+  background-color: #ff0000;
+}
+
+.status-empty {
+  background-color: #2e8b57;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.status:hover {
+  background-color: #1bd669;
+}
 
 /* Cart Styles */
 .cart-row {
-  padding: 1rem;
   display: block;
-  background-color: #f8dbdb;
-  border-radius: 5px;
+  /* background-color: #f8dbdb; */
+  /* padding: 1rem; */
 }
 
 .cart {
-  display: block;
-  padding: 10px;
-  margin: 10px;
+  cursor: pointer;
   background-color: #fff;
+  padding: 10px;
+  margin: 0;
   border-radius: 5px;
-  border: 2px solid rgb(255, 177, 177);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.317);
+  border-top: 2px solid rgb(177, 255, 177);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.317);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .cart-alamat {
   padding: 5px;
-  border-left: 2px solid rgb(255, 177, 177);
+  border-left: 2px solid rgb(206, 255, 177);
   background-color: #ff9c9c23;
 }
 
 .cart-row-logo {
   display: flex;
-  gap: 12rem;
+  justify-content: space-between;
+}
+
+.cart-row-logo h1 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.cart-row-logo button {
+  background-color: #227aff;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.cart-row-logo button:hover {
+  background-color: #b6b4ff;
 }
 
 /* Button Styles */
 button {
+  background-color: rgb(255, 222, 216);
+  color: #000;
+  border: none;
+  padding: 7px;
+  border-radius: 10px;
   font-size: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: rgb(255, 222, 216);
-  margin: 10px;
-  padding: 7px;
-  border-radius: 10px;
-  color: #000000;
-  border: none;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.147);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.147);
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: rgb(255, 255, 255);
-  color: tomato;
+  background-color: #fff;
+  color: rgb(255, 255, 255);
 }
 
-/* Leaflet Popup */
-.leaflet-popup-content {
-  font-size: 14px;
-  font-weight: bold;
+button img {
+  margin-right: 10px;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-  body {
-    min-height: 300px;
-  }
-
   .container {
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically for small screens */
     align-items: center;
-    margin: 10px;
+    gap: 10px; /* Reduce gap between map and cart */
   }
 
   .info,
   .map-container {
-    width: 100%;
+    width: 100%; /* Take full width on small screens */
     margin-bottom: 20px;
   }
 
   .info {
-    padding: 10px;
     font-size: 16px;
+    padding: 10px;
   }
 
   .info h2 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .map-container {
@@ -200,27 +226,15 @@ button:hover {
   }
 
   .cart-row {
-    padding: 0.5rem;
     font-size: 12px;
+    padding: 0.5rem;
   }
 
   .cart-alamat {
     padding: 2px;
-    font-size: 12px;
   }
 
-  button {
-    font-size: 16px;
-    padding: 5px;
-    margin: 5px;
-  }
-
-  header h1 {
-    font-size: 1.5em;
-  }
-
-  .status {
-    font-size: 14px;
-    padding: 8px;
+  .cart-status {
+    padding-top: 5px;
   }
 }
