@@ -26,6 +26,7 @@
   <div class="info">
     <nav 
     style="display: flex;
+          flex-direction: row;
           justify-content: space-around;
           /* background-color: aliceblue; */
           align-items: center;
@@ -33,10 +34,19 @@
     >
       <div 
       style="
+      text-align: center;
         font-size: 20px;
         font-weight: 700;
+        color: rgb(0, 0, 0);
+        border-left: 2px solid rgb(0, 255, 64);
+        background-color: rgba(0, 0, 0, 0.38);
+        padding: 5px;
       "
-      class="nav-logo">Nugra21</div>
+      class="nav-logo">
+      <!-- <button id="light-theme">Light Mode</button>
+      <button id="dark-theme">Dark Mode</button> -->
+      <img style="width: 25px;" src="https://cdn-icons-png.flaticon.com/128/12761/12761282.png" alt="">
+    </div>
       <div 
       style="
         display: flex;
@@ -45,9 +55,9 @@
         color: aliceblue;
       "
       class="nav-link">
-        <div class="link"><a href="#">Daftar</a></div>
+        <div class="link"><a href="#">Kontak</a></div>
         <div class="link"><a href="#">login</a></div>
-        <div class="link"><a href="#">chat</a></div>
+        <div class="link"><a href="#">Tambahkan +</a></div>
       </div>
     </nav>
     <h2><img width="30px" src="https://cdn-icons-png.flaticon.com/128/2514/2514330.png" alt=""> Status Tong Sampah</h2>
@@ -63,8 +73,10 @@
           </div>
           </div>
           <div class="cart-alamat">
-            <h4>alamat rumah </h4>
-            <p>Sekarsuli, Sendangtirto, Kec. Berbah, <br> Kabupaten Sleman, Daerah Istimewa</p>
+            <h4><img width="15px" src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="">    - Rumah milik  : . . . . . . </h4>
+            <h4>alamat rumah 
+              <p>Sekarsuli, Sendangtirto, Kec. Berbah, <br> Kabupaten Sleman, Daerah Istimewa</p>
+            </h4>
           </div>
         </div>
         <div class="cart-status">
@@ -81,41 +93,67 @@
           </div>
           </div>
           <div class="cart-alamat">
-            <h4>alamat rumah </h4>
-            <p>Sekarsuli, Sendangtirto, Kec. Berbah, <br> Kabupaten Sleman, Daerah Istimewa</p>
+            <h4><img width="15px" src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="">    - Rumah milik  : . . . . . . </h4>
+            <h4>alamat rumah 
+              <p>Sekarsuli, Sendangtirto, Kec. Berbah, <br> Kabupaten Sleman, Daerah Istimewa</p>
+            </h4>
           </div>
         </div>
         <div class="cart-status">
           <div id="statusTongSampah2" class="status">Menunggu status...</div>
         </div>
       </div>
-            <!-- rumah 3 -->
-            <div class="cart">
-              <div class="cart-data">
-                <div class="cart-row-logo">
-                  <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 3</h1>
-                  <div class="buttons">
-                    <button id="light-theme" onclick="location.href=''"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
-                </div>
-                </div>
-                <div class="cart-alamat">
-                  <h4></h4>
-                  <p></p>
-                </div>
-              </div>
-              <div class="cart-status">
-                <div id="statusTongSampah3" class="status">Belum ada </div>
-              </div>
+      <div class="none">
+        <!-- rumah 3 -->
+        <div class="cart">
+          <div class="cart-data">
+            <div class="cart-row-logo">
+              <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 3</h1>
+              <div class="buttons">
+                <button id="light-theme" onclick="location.href=''"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
             </div>
+            </div>
+            <div class="cart-alamat">
+              <h4><img width="15px" src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="">    - Rumah milik  : . . . . . . </h4>
+              <h4>Alamat rumah
+                <p>. . . . .  .</p>
+              </h4>
+            </div>
+          </div>
+          <div class="cart-status">
+            <div id="statusTongSampah3" class="status">Belum ada </div>
+          </div>
+        </div>
+        <!-- rumah 4 -->
+        <div class="cart">
+          <div class="cart-data">
+            <div class="cart-row-logo">
+              <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 4</h1>
+              <div class="buttons">
+                <button id="light-theme" onclick="location.href=''"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
+            </div>
+            </div>
+            <div class="cart-alamat">
+              <h4><img width="15px" src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="">    - Rumah milik  : . . . . . . </h4>
+              <h4>Alamat rumah
+                <p>. . . . .  .</p>
+              </h4>
+            </div>
+          </div>
+          <div class="cart-status">
+            <div id="statusTongSampah3" class="status">Belum ada </div>
+          </div>
+        </div>
+      </div>
       <!--  -->
     </div>
   </div>
   <!--  -->
   <!--  -->
 </div>
-<nav>
+<!-- <nav>
  <h1>data acces </h1>
-</nav>
+</nav> -->
 <!-- ------------------------------------------------------------------------------------------- -->
 <!-- js  -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

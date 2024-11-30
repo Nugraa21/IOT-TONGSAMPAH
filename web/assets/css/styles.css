@@ -21,12 +21,16 @@
 }
 
 /* General Styles */
+.none{
+  display: none;
+}
 a{
   text-decoration: none;
+  color: white;
 }
 body {
   font-family: var(--font-family);
-  background-color: #d7ffd9;
+  background-color: #528c55;
   margin: 0;
   padding: 0;
   color: var(--text-color);
@@ -44,7 +48,21 @@ header h1 {
   color: #ffffff;
   letter-spacing: 2px;
 }
-
+.link a{
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 255, 64);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5px;
+}
+.link a:hover{
+  color: rgb(255, 255, 255);
+  border-left: 2px solid rgb(255, 0, 0);
+  background-color: rgba(206, 0, 0, 0.212);
+}
 /* Container Layout */
 .container {
   display: flex;
@@ -89,9 +107,10 @@ header h1 {
 .map-container {
   z-index: 1;
   position: relative;
+  display: inline-block;
   /* width: 75%;  */
   /* height: 830px;  */
-  width:120% ; 
+  width:140% ; 
   height:100vh ; 
   border-right : 5px solid #7dff93;
   border-bottom : 5px solid #88ff7d;
@@ -172,17 +191,17 @@ header h1 {
 }
 
 .cart-row-logo button {
-  background-color: #227aff;
-  color: white;
-  border: none;
+  background-color: #fff422;
+  color: rgb(255, 1, 1);
+  /* border: none; */
   padding: 8px;
-  border-radius: 5px;
+  border-radius: 5px 0px 0px 5px;
   font-size: 15px;
   transition: background-color 0.3s ease;
 }
 
 .cart-row-logo button:hover {
-  background-color: #b6b4ff;
+  background-color: #a4c211;
 }
 
 /* Button Styles */
@@ -210,12 +229,28 @@ button img {
 
 /* Media Queries */
 @media (max-width: 768px) {
+  .none{
+    display: block;
+  }
   .container {
     flex-direction: column; /* Stack vertically for small screens */
     align-items: center;
     gap: 10px; /* Reduce gap between map and cart */
   }
-
+  .link a{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    border-left: 2px solid rgb(0, 255, 64);
+    background-color: rgba(0, 0, 0, 0);
+    padding: 5px;
+  }
+  .link a:hover{
+    color: rgb(255, 255, 255);
+    border-left: 2px solid rgb(255, 0, 0);
+    background-color: rgba(206, 0, 0, 0.212);
+  }
   .info,
   .map-container {
     width: 100%; /* Take full width on small screens */
@@ -228,8 +263,8 @@ button img {
     z-index: 100;
     position: absolute;
     border-top: 2px solid rgb(51, 255, 51);
-    top: 40rem;
-    height: 112%;
+    top: 30rem;
+    height: 220%;
     position: absolute;
     z-index: 1000;
     font-size: 16px;
