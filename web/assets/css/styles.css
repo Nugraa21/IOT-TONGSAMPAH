@@ -134,7 +134,7 @@ header h1 {
   cursor: pointer;
   background-color: #fff;
   /* padding: 10px; */
-  margin-top: 1rem;
+  margin-top: 1.3rem;
   border-radius: 5px;
   border-top: 2px solid rgb(177, 255, 177);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.317);
@@ -147,19 +147,28 @@ header h1 {
 }
 
 .cart-alamat {
-  padding: 5px;
   border-left: 2px solid rgb(206, 255, 177);
-  background-color: #ff9c9c23;
+}
+.cart-alamat h4{
+  padding: 10px;
+  border-left: 2px solid rgb(94, 255, 0);
+  background-color: #b3ff9c23;
+}
+.cart-alamat p{
+  padding: 10px;
+  border-left: 2px solid rgb(94, 255, 0);
+  background-color: #b3ff9c23;
 }
 
 .cart-row-logo {
+  border-bottom: 2px solid rgb(122, 254, 108);
   display: flex;
   justify-content: space-between;
 }
 
 .cart-row-logo h1 {
   font-size: 1.5rem;
-  color: #333;
+  color: #968d1f;
 }
 
 .cart-row-logo button {
@@ -220,13 +229,14 @@ button img {
     position: absolute;
     border-top: 2px solid rgb(51, 255, 51);
     top: 40rem;
-    height: 100%;
+    height: 112%;
     position: absolute;
     z-index: 1000;
     font-size: 16px;
     padding: 10px;
-    background-color: #0000001f;
-    backdrop-filter: blur(10px); /* Menambahkan efek blur */
+    background-color: #125d1b6c;
+    box-shadow: 0px -30px 10px rgba(0, 0, 0, 0.205);
+    backdrop-filter: blur(5px); /* Menambahkan efek blur */
   }
 
   .info h2 {
@@ -239,7 +249,7 @@ button img {
   }
 
   .cart {
-    margin: 5px;
+    margin: 5px 0px 20px ;
     padding: 5px;
     font-size: 14px;
   }
