@@ -202,7 +202,7 @@
 <script src="assets/js/tema.js"></script>
 <!-- server -->
 <script>
-    const eventSource = new EventSource('http://localhost:3001/refresh');
+    const eventSource = new EventSource('http://nugra21:3001/refresh');
     eventSource.onmessage = () => {
         location.reload();
     };

@@ -35,5 +35,5 @@ http.createServer((req, res) => {
         }
     });
 }).listen(PORT, () => {
-    console.log(`Server berjalan di http://localhost:${PORT}`);
+    console.log(`Server berjalan di http://nugra21:${PORT}`);
 });

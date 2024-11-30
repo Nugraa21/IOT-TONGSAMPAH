@@ -1,5 +1,5 @@
-    // Lokasi tong sampah
-    const lokasiTongSampah1 = [-7.82062992849643, 110.42654669574745];
+      // Lokasi tong sampah
+      const lokasiTongSampah1 = [-7.82062992849643, 110.42654669574745];
     const lokasiTongSampah2 = [-7.820135382837104, 110.42666630956253];
 
     // Inisialisasi peta
@@ -10,11 +10,15 @@
     }).addTo(map);
 
     // Menambahkan marker untuk tong sampah
-    const markerTongSampah1 = L.marker(lokasiTongSampah1).addTo(map)
+    const markerTongSampah1 = L.marker(lokasiTongSampah1, {
+      icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
+    }).addTo(map)
       .bindPopup('Tong Sampah 1')
       .openPopup();
 
-    const markerTongSampah2 = L.marker(lokasiTongSampah2).addTo(map)
+    const markerTongSampah2 = L.marker(lokasiTongSampah2, {
+      icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
+    }).addTo(map)
       .bindPopup('Tong Sampah 2');
 
     // Inisialisasi MQTT
@@ -36,9 +40,12 @@
           statusElement.classList.add('status-full');
           statusElement.classList.remove('status-empty');
           markerTongSampah1.bindPopup('Tong Sampah 1 Penuh').openPopup();
+          markerTongSampah1.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
+          playAlertSound();
         } else {
           statusElement.classList.add('status-empty');
           statusElement.classList.remove('status-full');
+          markerTongSampah1.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
         }
       }
 
@@ -49,9 +56,18 @@
           statusElement.classList.add('status-full');
           statusElement.classList.remove('status-empty');
           markerTongSampah2.bindPopup('Tong Sampah 2 Penuh').openPopup();
+          markerTongSampah2.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
+          playAlertSound();
         } else {
           statusElement.classList.add('status-empty');
           statusElement.classList.remove('status-full');
+          markerTongSampah2.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
         }
       }
     });
+
+    // Fungsi untuk memutar suara alert
+    function playAlertSound() {
+      const audio = new Audio('pilager.mp3');
+      audio.play();
+    }
