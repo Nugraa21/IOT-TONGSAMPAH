@@ -21,6 +21,9 @@
 }
 
 /* General Styles */
+a{
+  text-decoration: none;
+}
 body {
   font-family: var(--font-family);
   background-color: #d7ffd9;
@@ -45,7 +48,7 @@ header h1 {
 /* Container Layout */
 .container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-around; */
   /* gap: 20px; */
   /* padding-top: 20px; */
   margin: 0;
@@ -53,7 +56,7 @@ header h1 {
 
 /* Info Section */
 .info {
-  width: 30%; /* Menyesuaikan ukuran agar map dan cart bisa berdampingan */
+  width: 40%; /* Menyesuaikan ukuran agar map dan cart bisa berdampingan */
   padding: 15px;
   color: #333;
   box-sizing: border-box; /* Agar padding tidak merusak ukuran */
@@ -84,11 +87,13 @@ header h1 {
   padding: 5px;
 }
 .map-container {
-  width: 75%; /* Map lebih lebar sedikit dibandingkan dengan info */
-  height: 830px; /* Sesuaikan tinggi agar proporsional */
+  /* width: 75%;  */
+  /* height: 830px;  */
+  width:120% ; 
+  height:100vh ; 
   border-right : 5px solid #7dff93;
   border-bottom : 5px solid #88ff7d;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 /* Status Styles */
@@ -126,8 +131,8 @@ header h1 {
 .cart {
   cursor: pointer;
   background-color: #fff;
-  padding: 10px;
-  margin: 0;
+  /* padding: 10px; */
+  margin-top: 1rem;
   border-radius: 5px;
   border-top: 2px solid rgb(177, 255, 177);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.317);
@@ -204,6 +209,8 @@ button img {
   .map-container {
     width: 100%; /* Take full width on small screens */
     margin-bottom: 20px;
+    border-right: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.247);
   }
 
   .info {
