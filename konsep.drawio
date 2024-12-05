@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="1cdiKSfY0_i7nyihkiWr" name="Page-1">
-        <mxGraphModel dx="1224" dy="1852" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="726" dy="1707" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -14,7 +14,7 @@
                     <mxGeometry x="142.5" y="260" width="135" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="MQTT" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#b1ddf0;strokeColor=#000000;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="370" width="87.5" height="80" as="geometry"/>
+                    <mxGeometry x="372.5" width="87.5" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;fillColor=#ffff88;strokeColor=#36393d;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">

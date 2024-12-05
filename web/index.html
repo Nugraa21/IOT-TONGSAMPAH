@@ -115,13 +115,13 @@
             </div>
             <div class="cart-alamat">
               <h4><img width="15px" src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="">    - Rumah milik  : . . . . . . </h4>
-              <h4>Alamat rumah
-                <p>. . . . .  .</p>
+              <h4>alamat rumah 
+                <p>Sekarsuli, Sendangtirto, Kec. Berbah, <br> Kabupaten Sleman, Daerah Istimewa</p>
               </h4>
             </div>
           </div>
           <div class="cart-status">
-            <div id="statusTongSampah3" class="status">Belum ada </div>
+            <div id="statusTongSampah3" class="status">Menunggu status...</div>
           </div>
         </div>
         <!-- rumah 4 -->
@@ -166,7 +166,9 @@
  <script>
       // Lokasi tong sampah
       const lokasiTongSampah1 = [-7.82062992849643, 110.42654669574745];
-    const lokasiTongSampah2 = [-7.820135382837104, 110.42666630956253];
+      const lokasiTongSampah2 = [-7.820135382837104, 110.42666630956253];
+      const lokasiTongSampah3 = [-7.821398025909336, 110.42598761336608];
+
 
     // Inisialisasi peta
     const map = L.map('map').setView([-7.8204, 110.4266], 16); // Pusat peta
@@ -187,6 +189,11 @@
     }).addTo(map)
       .bindPopup('Tong Sampah 2');
 
+      const markerTongSampah3 = L.marker(lokasiTongSampah3, {
+      icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
+    }).addTo(map)
+      .bindPopup('Tong Sampah 3');
+
     // Inisialisasi MQTT
     const client = mqtt.connect('ws://broker.mqttdashboard.com:8000/mqtt');
 
@@ -194,6 +201,7 @@
       console.log('MQTT Connected');
       client.subscribe('tong_sampah_1/status');
       client.subscribe('tong_sampah_2/status');
+      client.subscribe('tong_sampah_3/status');
     });
 
     client.on('message', function (topic, message) {
@@ -228,6 +236,22 @@
           statusElement.classList.add('status-empty');
           statusElement.classList.remove('status-full');
           markerTongSampah2.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
+        }
+      }
+
+      if (topic === 'tong_sampah_3/status') {
+        const statusElement = document.getElementById('statusTongSampah3');
+        statusElement.textContent = 'Status: ' + status;
+        if (status === 'Sudah Penuh') {
+          statusElement.classList.add('status-full');
+          statusElement.classList.remove('status-empty');
+          markerTongSampah3.bindPopup('Tong Sampah 3 Penuh').openPopup();
+          markerTongSampah3.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
+          playAlertSound();
+        } else {
+          statusElement.classList.add('status-empty');
+          statusElement.classList.remove('status-full');
+          markerTongSampah3.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
         }
       }
     });

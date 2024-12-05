@@ -1,6 +1,6 @@
       // Lokasi tong sampah
       const lokasiTongSampah1 = [-7.82062992849643, 110.42654669574745];
-    const lokasiTongSampah2 = [-7.820135382837104, 110.42666630956253];
+      const lokasiTongSampah2 = [-7.820135382837104, 110.42666630956253];
 
     // Inisialisasi peta
     const map = L.map('map').setView([-7.8204, 110.4266], 16); // Pusat peta
