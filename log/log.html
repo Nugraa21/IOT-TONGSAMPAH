@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Tong Sampah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .logo{
+            align-items: center;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .flex-all {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            /* align-items: center; */
+        }
+        .log-container {
+            max-width: 100%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+        table {
+            width: 500px;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            color: white;
+        }
+        #table-tong-1 th {
+            background-color: #007bff;
+        }
+        #table-tong-2 th {
+            background-color: #28a745;
+        }
+        #table-tong-3 th {
+            background-color: #ffc107;
+        }
+        tr.full {
+            background-color: #ff4c4c !important;
+            color: white;
+        }
+        button {
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d10000;
+        }
+        .table-container {
+            max-height: 500px; /* Batas tinggi tabel */
+            overflow-y: auto; /* Aktifkan scroll vertikal */
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body>
+    <div class="log-container">
+        <div class="logo">
+            <h2>Log Tong Sampah</h2>
+            <button onclick="clearLogs()">Clear All Logs</button>
+        </div>
+
+        <!-- Tabel Tong Sampah 1 -->
+        <div class="flex-all">
+        <div class="flex">
+             <h3>Log Tong Sampah 1</h3>
+             <div class="table-container">
+                 <table id="table-tong-1">
+                     <thead>
+                         <tr>
+                             <th>Pesan</th>
+                             <th>Tanggal & Waktu</th>
+                         </tr>
+                     </thead>
+                     <tbody id="log-tong-1"></tbody>
+                 </table>
+             </div>
+         </div>
+
+        <!-- Tabel Tong Sampah 2 -->
+        <div class="flex">
+            <h3>Log Tong Sampah 2</h3>
+            <div class="table-container">
+                <table id="table-tong-2">
+                    <thead>
+                        <tr>
+                            <th>Pesan</th>
+                            <th>Tanggal & Waktu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-tong-2"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tabel Tong Sampah 3 -->
+        <div class="flex">
+            <h3>Log Tong Sampah 3</h3>
+            <div class="table-container">
+                <table id="table-tong-3">
+                    <thead>
+                        <tr>
+                            <th>Pesan</th>
+                            <th>Tanggal & Waktu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-tong-3"></tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+<!--  -->
+    </div>
+
+    <script>
+        const client = mqtt.connect('ws://broker.mqttdashboard.com:8000/mqtt');
+
+        client.on('connect', function () {
+            console.log('MQTT Connected');
+            client.subscribe('tong_sampah_1/status');
+            client.subscribe('tong_sampah_2/status');
+            client.subscribe('tong_sampah_3/status');
+        });
+
+        client.on('message', function (topic, message) {
+            const msg = message.toString();
+            const date = new Date();
+            const formattedTime = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+
+            let tableBodyId;
+
+            // Tentukan tabel berdasarkan topik
+            if (topic === 'tong_sampah_1/status') {
+                tableBodyId = 'log-tong-1';
+            } else if (topic === 'tong_sampah_2/status') {
+                tableBodyId = 'log-tong-2';
+            } else if (topic === 'tong_sampah_3/status') {
+                tableBodyId = 'log-tong-3';
+            }
+
+            if (tableBodyId) {
+                const tableBody = document.getElementById(tableBodyId);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${msg}</td>
+                    <td>${formattedTime}</td>
+                `;
+
+                // Ubah warna baris jika status adalah "Sudah Penuh"
+                if (msg === 'Sudah Penuh') {
+                    row.classList.add('full');
+                }
+
+                // Tambahkan baris ke tabel
+                tableBody.prepend(row);
+            }
+        });
+
+        function clearLogs() {
+            document.getElementById('log-tong-1').innerHTML = '';
+            document.getElementById('log-tong-2').innerHTML = '';
+            document.getElementById('log-tong-3').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
