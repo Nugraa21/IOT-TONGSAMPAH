@@ -7,21 +7,22 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #ffffff;
             color: #333;
         }
-        .logo{
+        .logo {
             align-items: center;
             display: flex;
             width: 100%;
             justify-content: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
         .flex-all {
+            flex-wrap: wrap;
             display: flex;
             gap: 1rem;
             justify-content: center;
-            /* align-items: center; */
         }
         .log-container {
             max-width: 100%;
@@ -35,10 +36,13 @@
             text-align: center;
             color: #007bff;
         }
+        h3 {
+            text-align: center;
+        }
         table {
-            width: 500px;
+            width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin: 10px auto;
         }
         table th, table td {
             border: 1px solid #ddd;
@@ -74,11 +78,44 @@
             background-color: #d10000;
         }
         .table-container {
-            max-height: 500px; /* Batas tinggi tabel */
-            overflow-y: auto; /* Aktifkan scroll vertikal */
+            width: 500px;
+            max-height: 500px;
+            overflow-y: scroll;
             margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            background-color: white;
+        }
+        /* Styling untuk scrollbar */
+        .table-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background-color: #cccccc; /* Warna scroll */
+            border-radius: 4px;
+        }
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background-color: #999999;
+        }
+        .table-container::-webkit-scrollbar-track {
+            background-color: #ffffff; /* Warna background scrollbar */
+        }
+        @media screen and (max-width: 768px) {
+            table {
+                width: 100%;
+                font-size: 14px;
+            }
+            .table-container {
+                width: 100%;
+            }
+            button {
+                width: 100%;
+                text-align: center;
+            }
+            .flex-all {
+                flex-direction: column;
+                gap: 2rem;
+            }
         }
     </style>
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
@@ -87,63 +124,94 @@
     <div class="log-container">
         <div class="logo">
             <h2>Log Tong Sampah</h2>
-            <button onclick="clearLogs()">Clear All Logs</button>
         </div>
 
-        <!-- Tabel Tong Sampah 1 -->
         <div class="flex-all">
-        <div class="flex">
-             <h3>Log Tong Sampah 1</h3>
-             <div class="table-container">
-                 <table id="table-tong-1">
-                     <thead>
-                         <tr>
-                             <th>Pesan</th>
-                             <th>Tanggal & Waktu</th>
-                         </tr>
-                     </thead>
-                     <tbody id="log-tong-1"></tbody>
-                 </table>
-             </div>
-         </div>
+            <div>
+                <h3>Log Tong Sampah 1</h3>
+                <div class="table-container">
+                    <table id="table-tong-1">
+                        <thead>
+                            <tr>
+                                <th>Pesan</th>
+                                <th>Tanggal & Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-tong-1"></tbody>
+                    </table>
+                </div>
+            </div>
 
-        <!-- Tabel Tong Sampah 2 -->
-        <div class="flex">
-            <h3>Log Tong Sampah 2</h3>
-            <div class="table-container">
-                <table id="table-tong-2">
-                    <thead>
-                        <tr>
-                            <th>Pesan</th>
-                            <th>Tanggal & Waktu</th>
-                        </tr>
-                    </thead>
-                    <tbody id="log-tong-2"></tbody>
-                </table>
+            <div>
+                <h3>Log Tong Sampah 2</h3>
+                <div class="table-container">
+                    <table id="table-tong-2">
+                        <thead>
+                            <tr>
+                                <th>Pesan</th>
+                                <th>Tanggal & Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-tong-2"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <h3>Log Tong Sampah 3</h3>
+                <div class="table-container">
+                    <table id="table-tong-3">
+                        <thead>
+                            <tr>
+                                <th>Pesan</th>
+                                <th>Tanggal & Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-tong-3"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <!-- Tabel Tong Sampah 3 -->
-        <div class="flex">
-            <h3>Log Tong Sampah 3</h3>
-            <div class="table-container">
-                <table id="table-tong-3">
-                    <thead>
-                        <tr>
-                            <th>Pesan</th>
-                            <th>Tanggal & Waktu</th>
-                        </tr>
-                    </thead>
-                    <tbody id="log-tong-3"></tbody>
-                </table>
+        <div>
+            <h3><button onclick="clearLogs()">Clear All Logs</button>
+                <br>
+                Analisis Data</h3>
+            <div id="analysis">
+                <p>Tong Sampah 1: <span id="count-tong-1">0</span> kali penuh</p>
+                <p>Tong Sampah 2: <span id="count-tong-2">0</span> kali penuh</p>
+                <p>Tong Sampah 3: <span id="count-tong-3">0</span> kali penuh</p>
+                <p>Tempat yang paling sering penuh: <span id="most-full">Belum ada data</span></p>
             </div>
         </div>
-        </div>
-<!--  -->
     </div>
-
     <script>
         const client = mqtt.connect('ws://broker.mqttdashboard.com:8000/mqtt');
+        const counts = { tong1: 0, tong2: 0, tong3: 0 };
+
+        // Ambil data dari localStorage
+        const savedLogs = JSON.parse(localStorage.getItem('logs')) || { tong1: [], tong2: [], tong3: [] };
+
+        function renderLogs() {
+            // Render logs yang sudah disimpan
+            savedLogs.tong1.forEach(log => appendLog('log-tong-1', log));
+            savedLogs.tong2.forEach(log => appendLog('log-tong-2', log));
+            savedLogs.tong3.forEach(log => appendLog('log-tong-3', log));
+            updateAnalysis();
+        }
+
+        function appendLog(tableBodyId, log) {
+            const tableBody = document.getElementById(tableBodyId);
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${log.message}</td>
+                <td>${log.timestamp}</td>
+            `;
+            if (log.message === 'Sudah Penuh') {
+                row.classList.add('full');
+            }
+            tableBody.prepend(row);
+        }
 
         client.on('connect', function () {
             console.log('MQTT Connected');
@@ -156,41 +224,69 @@
             const msg = message.toString();
             const date = new Date();
             const formattedTime = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-
             let tableBodyId;
+            let logData;
 
-            // Tentukan tabel berdasarkan topik
             if (topic === 'tong_sampah_1/status') {
                 tableBodyId = 'log-tong-1';
+                if (msg === 'Sudah Penuh') counts.tong1++;
+                logData = { message: msg, timestamp: formattedTime };
+                savedLogs.tong1.push(logData);
             } else if (topic === 'tong_sampah_2/status') {
                 tableBodyId = 'log-tong-2';
+                if (msg === 'Sudah Penuh') counts.tong2++;
+                logData = { message: msg, timestamp: formattedTime };
+                savedLogs.tong2.push(logData);
             } else if (topic === 'tong_sampah_3/status') {
                 tableBodyId = 'log-tong-3';
+                if (msg === 'Sudah Penuh') counts.tong3++;
+                logData = { message: msg, timestamp: formattedTime };
+                savedLogs.tong3.push(logData);
             }
 
             if (tableBodyId) {
-                const tableBody = document.getElementById(tableBodyId);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${msg}</td>
-                    <td>${formattedTime}</td>
-                `;
-
-                // Ubah warna baris jika status adalah "Sudah Penuh"
-                if (msg === 'Sudah Penuh') {
-                    row.classList.add('full');
-                }
-
-                // Tambahkan baris ke tabel
-                tableBody.prepend(row);
+                appendLog(tableBodyId, logData);
             }
+
+            // Simpan logs ke localStorage
+            localStorage.setItem('logs', JSON.stringify(savedLogs));
+
+            updateAnalysis();
         });
 
+        function updateAnalysis() {
+            document.getElementById('count-tong-1').textContent = counts.tong1;
+            document.getElementById('count-tong-2').textContent = counts.tong2;
+            document.getElementById('count-tong-3').textContent = counts.tong3;
+
+            const maxCount = Math.max(counts.tong1, counts.tong2, counts.tong3);
+            let mostFull = 'Belum ada data';
+            if (maxCount > 0) {
+                if (counts.tong1 === maxCount) mostFull = 'Tong Sampah 1';
+                if (counts.tong2 === maxCount) mostFull = 'Tong Sampah 2';
+                if (counts.tong3 === maxCount) mostFull = 'Tong Sampah 3';
+            }
+            document.getElementById('most-full').textContent = mostFull;
+        }
+
         function clearLogs() {
+            // Hapus semua logs dari tampilan dan localStorage
+            savedLogs.tong1 = [];
+            savedLogs.tong2 = [];
+            savedLogs.tong3 = [];
+            localStorage.removeItem('logs');
+            updateAnalysis();
+
+            // Clear table display
             document.getElementById('log-tong-1').innerHTML = '';
             document.getElementById('log-tong-2').innerHTML = '';
             document.getElementById('log-tong-3').innerHTML = '';
         }
+
+        // Render logs saat halaman dimuat
+        renderLogs();
     </script>
+
+    
 </body>
 </html>
