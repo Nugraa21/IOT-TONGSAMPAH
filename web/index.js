@@ -19,7 +19,8 @@ icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
 .bindPopup(`
 <div style="font-family: Arial, sans-serif; padding: 10px;">
 <h3 style="margin: 0; font-size: 18px;">Tong Sampah 1</h3>
-<p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 1</p>
+<p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
 <p id="statusTongSampah1" class="status-empty-js" style="margin: 5px 0; font-weight: bold; color: green;">Status: Kosong</p>
 </div>
 `)
@@ -31,7 +32,8 @@ icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
 .bindPopup(`
 <div style="font-family: Arial, sans-serif; padding: 10px;">
 <h3 style="margin: 0; font-size: 18px;">Tong Sampah 2</h3>
-<p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 2</p>
+<p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
 <p id="statusTongSampah2" class="status-empty-js" style="margin: 5px 0; font-weight: bold; color: green;">Status: Kosong</p>
 </div>
 `);
@@ -42,7 +44,8 @@ icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
 .bindPopup(`
 <div style="font-family: Arial, sans-serif; padding: 10px;">
 <h3 style="margin: 0; font-size: 18px;">Tong Sampah 3</h3>
-<p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 3</p>
+<p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
 <p id="statusTongSampah3" class="status-empty-js" style="margin: 5px 0; font-weight: bold; color: green;">Status: Kosong</p>
 </div>
 `);
@@ -71,7 +74,8 @@ statusElement.classList.remove('status-empty');
 markerTongSampah1.bindPopup(`
   <div style="font-family: Arial, sans-serif; padding: 10px;">
     <h3 style="margin: 0; font-size: 18px; color: red;">Tong Sampah 1 Penuh</h3>
-    <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 1</p>
+    <p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
     <p style="margin: 5px 0;">Status: <span style="color: red; font-weight: bold;">Penuh</span></p>
     <p style="margin: 5px 0;">Mohon segera kosongkan tong sampah ini.</p>
   </div>
@@ -84,7 +88,8 @@ statusElement.classList.remove('status-full');
 markerTongSampah1.bindPopup(`
   <div style="font-family: Arial, sans-serif; padding: 10px;">
     <h3 style="margin: 0; font-size: 18px; color: green;">Tong Sampah 1 Kosong</h3>
-    <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 1</p>
+    <p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
     <p style="margin: 5px 0;">Status: <span style="color: green; font-weight: bold;">Kosong</span></p>
   </div>
 `);
@@ -102,7 +107,8 @@ statusElement.classList.remove('status-empty');
 markerTongSampah2.bindPopup(`
   <div style="font-family: Arial, sans-serif; padding: 10px;">
     <h3 style="margin: 0; font-size: 18px; color: red;">Tong Sampah 2 Penuh</h3>
-    <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 2</p>
+    <p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
     <p style="margin: 5px 0;">Status: <span style="color: red; font-weight: bold;">Penuh</span></p>
     <p style="margin: 5px 0;">Mohon segera kosongkan tong sampah ini.</p>
   </div>
@@ -115,7 +121,8 @@ statusElement.classList.remove('status-full');
 markerTongSampah2.bindPopup(`
   <div style="font-family: Arial, sans-serif; padding: 10px;">
     <h3 style="margin: 0; font-size: 18px; color: green;">Tong Sampah 2 Kosong</h3>
-    <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 2</p>
+    <p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
     <p style="margin: 5px 0;">Status: <span style="color: green; font-weight: bold;">Kosong</span></p>
   </div>
 `);
@@ -133,7 +140,8 @@ statusElement.classList.remove('status-empty');
 markerTongSampah3.bindPopup(`
   <div style="font-family: Arial, sans-serif; padding: 10px;">
     <h3 style="margin: 0; font-size: 18px; color: red;">Tong Sampah 3 Penuh</h3>
-    <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 3</p>
+    <p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
     <p style="margin: 5px 0;">Status: <span style="color: red; font-weight: bold;">Penuh</span></p>
     <p style="margin: 5px 0;">Mohon segera kosongkan tong sampah ini.</p>
   </div>
@@ -146,7 +154,8 @@ statusElement.classList.remove('status-full');
 markerTongSampah3.bindPopup(`
   <div style="font-family: Arial, sans-serif; padding: 10px;">
     <h3 style="margin: 0; font-size: 18px; color: green;">Tong Sampah 3 Kosong</h3>
-    <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 3</p>
+    <p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah,
+      Kabupaten Sleman, Daerah Istimewa</p>
     <p style="margin: 5px 0;">Status: <span style="color: green; font-weight: bold;">Kosong</span></p>
   </div>
 `);
