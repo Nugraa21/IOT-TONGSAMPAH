@@ -69,12 +69,13 @@
           <div class="cart-row-logo">
             <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 1</h1>
             <div class="buttons">
-              <button id="light-theme" onclick="location.href='https://maps.app.goo.gl/g2iWwM3xYWAd1wgC7'"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
+              <button id="light-theme" onclick="location.href='https://maps.app.goo.gl/g2iWwM3xYWAd1wgC7'"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Menuju lokasi</button>
           </div>
           </div>
           <div class="cart-alamat">
+            <!-- <button onclick="showTongSampah(1)">Lihat Lokasi Tong Sampah 1</button> -->
             <h4><img width="15px" src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="">    - Rumah milik  : . . . . . . </h4>
-            <h4>alamat rumah 
+            <h4>alamat rumah <a class="map-lokasi" href="javascript:void(0);" id="showLocationButton1">Lihat lokasi</a>
               <p>Sekarsuli, Sendangtirto, Kec. Berbah, <br> Kabupaten Sleman, Daerah Istimewa</p>
             </h4>
           </div>
@@ -89,12 +90,12 @@
           <div class="cart-row-logo">
             <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 2</h1>
             <div class="buttons">
-              <button id="light-theme" onclick="location.href='https://maps.app.goo.gl/2zHKCF3R3VQuNYzCA'"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
+              <button id="light-theme" onclick="location.href='https://maps.app.goo.gl/2zHKCF3R3VQuNYzCA'"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Menuju lokasi</button>
           </div>
           </div>
           <div class="cart-alamat">
             <h4><img width="15px" src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="">    - Rumah milik  : . . . . . . </h4>
-            <h4>alamat rumah 
+            <h4>alamat rumah <a class="map-lokasi" href="javascript:void(0);" id="showLocationButton2">Lihat lokasi</a>
               <p>Sekarsuli, Sendangtirto, Kec. Berbah, <br> Kabupaten Sleman, Daerah Istimewa</p>
             </h4>
           </div>
@@ -110,12 +111,12 @@
             <div class="cart-row-logo">
               <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 3</h1>
               <div class="buttons">
-                <button id="light-theme" onclick="location.href=''"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
+                <button id="light-theme" onclick="location.href='https://maps.app.goo.gl/iHQgDjBjHLhsEDMJ6'"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Menuju lokasi</button>
             </div>
             </div>
             <div class="cart-alamat">
               <h4><img width="15px" src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="">    - Rumah milik  : . . . . . . </h4>
-              <h4>alamat rumah 
+              <h4>alamat rumah <a class="map-lokasi" href="javascript:void(0);" id="showLocationButton3">Lihat lokasi</a>
                 <p>Sekarsuli, Sendangtirto, Kec. Berbah, <br> Kabupaten Sleman, Daerah Istimewa</p>
               </h4>
             </div>
@@ -130,7 +131,7 @@
             <div class="cart-row-logo">
               <h1><img width="30px" src="https://cdn-icons-png.flaticon.com/128/18397/18397677.png" alt=""> Rumah 4</h1>
               <div class="buttons">
-                <button id="light-theme" onclick="location.href=''"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Lihat lokasi</button>
+                <button id="light-theme" onclick="location.href=''"><img width="15px" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="">Menuju lokasi</button>
             </div>
             </div>
             <div class="cart-alamat">
@@ -171,28 +172,46 @@
 
 
     // Inisialisasi peta
-    const map = L.map('map').setView([-7.8204, 110.4266], 16); // Pusat peta
+    const map = L.map('map').setView([-7.8204, 110.4266], 20); // Pusat peta
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Menambahkan marker untuk tong sampah
-    const markerTongSampah1 = L.marker(lokasiTongSampah1, {
-      icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
-    }).addTo(map)
-      .bindPopup('Tong Sampah 1')
-      .openPopup();
+// Menambahkan marker untuk tong sampah dengan tampilan pop-up yang diperbarui
+const markerTongSampah1 = L.marker(lokasiTongSampah1, {
+  icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
+}).addTo(map)
+  .bindPopup(`
+    <div style="font-family: Arial, sans-serif; padding: 10px;">
+      <h3 style="margin: 0; font-size: 18px;">Tong Sampah 1</h3>
+      <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 1</p>
+      <p id="statusTongSampah1" class="status-empty-js" style="margin: 5px 0; font-weight: bold; color: green;">Status: Kosong</p>
+    </div>
+  `)
+  .openPopup();
 
-    const markerTongSampah2 = L.marker(lokasiTongSampah2, {
-      icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
-    }).addTo(map)
-      .bindPopup('Tong Sampah 2');
+const markerTongSampah2 = L.marker(lokasiTongSampah2, {
+  icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
+}).addTo(map)
+  .bindPopup(`
+    <div style="font-family: Arial, sans-serif; padding: 10px;">
+      <h3 style="margin: 0; font-size: 18px;">Tong Sampah 2</h3>
+      <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 2</p>
+      <p id="statusTongSampah2" class="status-empty-js" style="margin: 5px 0; font-weight: bold; color: green;">Status: Kosong</p>
+    </div>
+  `);
 
-      const markerTongSampah3 = L.marker(lokasiTongSampah3, {
-      icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
-    }).addTo(map)
-      .bindPopup('Tong Sampah 3');
+const markerTongSampah3 = L.marker(lokasiTongSampah3, {
+  icon: L.divIcon({ className: 'marker-empty', html: '🟢' })
+}).addTo(map)
+  .bindPopup(`
+    <div style="font-family: Arial, sans-serif; padding: 10px;">
+      <h3 style="margin: 0; font-size: 18px;">Tong Sampah 3</h3>
+      <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 3</p>
+      <p id="statusTongSampah3" class="status-empty-js" style="margin: 5px 0; font-weight: bold; color: green;">Status: Kosong</p>
+    </div>
+  `);
 
     // Inisialisasi MQTT
     const client = mqtt.connect('ws://broker.mqttdashboard.com:8000/mqtt');
@@ -205,62 +224,156 @@
     });
 
     client.on('message', function (topic, message) {
-      const status = message.toString();
-      
-      if (topic === 'tong_sampah_1/status') {
-        const statusElement = document.getElementById('statusTongSampah1');
-        statusElement.textContent = 'Status: ' + status;
-        if (status === 'Sudah Penuh') {
-          statusElement.classList.add('status-full');
-          statusElement.classList.remove('status-empty');
-          markerTongSampah1.bindPopup('Tong Sampah 1 Penuh').openPopup();
-          markerTongSampah1.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
-          playAlertSound();
-        } else {
-          statusElement.classList.add('status-empty');
-          statusElement.classList.remove('status-full');
-          markerTongSampah1.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
-        }
-      }
+  const status = message.toString();
 
-      if (topic === 'tong_sampah_2/status') {
-        const statusElement = document.getElementById('statusTongSampah2');
-        statusElement.textContent = 'Status: ' + status;
-        if (status === 'Sudah Penuh') {
-          statusElement.classList.add('status-full');
-          statusElement.classList.remove('status-empty');
-          markerTongSampah2.bindPopup('Tong Sampah 2 Penuh').openPopup();
-          markerTongSampah2.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
-          playAlertSound();
-        } else {
-          statusElement.classList.add('status-empty');
-          statusElement.classList.remove('status-full');
-          markerTongSampah2.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
-        }
-      }
+  if (topic === 'tong_sampah_1/status') {
+    const statusElement = document.getElementById('statusTongSampah1');
+    statusElement.textContent = 'Status: ' + status;
+    if (status === 'Sudah Penuh') {
+      statusElement.classList.add('status-full');
+      statusElement.classList.remove('status-empty');
+      markerTongSampah1.bindPopup(`
+        <div style="font-family: Arial, sans-serif; padding: 10px;">
+          <h3 style="margin: 0; font-size: 18px; color: red;">Tong Sampah 1 Penuh</h3>
+          <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 1</p>
+          <p style="margin: 5px 0;">Status: <span style="color: red; font-weight: bold;">Penuh</span></p>
+          <p style="margin: 5px 0;">Mohon segera kosongkan tong sampah ini.</p>
+        </div>
+      `).openPopup();
+      markerTongSampah1.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
+      playAlertSound();
+    } else {
+      statusElement.classList.add('status-empty');
+      statusElement.classList.remove('status-full');
+      markerTongSampah1.bindPopup(`
+        <div style="font-family: Arial, sans-serif; padding: 10px;">
+          <h3 style="margin: 0; font-size: 18px; color: green;">Tong Sampah 1 Kosong</h3>
+          <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 1</p>
+          <p style="margin: 5px 0;">Status: <span style="color: green; font-weight: bold;">Kosong</span></p>
+        </div>
+      `);
+      markerTongSampah1.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
+    }
+  }
 
-      if (topic === 'tong_sampah_3/status') {
-        const statusElement = document.getElementById('statusTongSampah3');
-        statusElement.textContent = 'Status: ' + status;
-        if (status === 'Sudah Penuh') {
-          statusElement.classList.add('status-full');
-          statusElement.classList.remove('status-empty');
-          markerTongSampah3.bindPopup('Tong Sampah 3 Penuh').openPopup();
-          markerTongSampah3.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
-          playAlertSound();
-        } else {
-          statusElement.classList.add('status-empty');
-          statusElement.classList.remove('status-full');
-          markerTongSampah3.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
-        }
-      }
-    });
+  // Ulangi logika yang sama untuk tong sampah 2 dan 3
+  if (topic === 'tong_sampah_2/status') {
+    const statusElement = document.getElementById('statusTongSampah2');
+    statusElement.textContent = 'Status: ' + status;
+    if (status === 'Sudah Penuh') {
+      statusElement.classList.add('status-full');
+      statusElement.classList.remove('status-empty');
+      markerTongSampah2.bindPopup(`
+        <div style="font-family: Arial, sans-serif; padding: 10px;">
+          <h3 style="margin: 0; font-size: 18px; color: red;">Tong Sampah 2 Penuh</h3>
+          <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 2</p>
+          <p style="margin: 5px 0;">Status: <span style="color: red; font-weight: bold;">Penuh</span></p>
+          <p style="margin: 5px 0;">Mohon segera kosongkan tong sampah ini.</p>
+        </div>
+      `).openPopup();
+      markerTongSampah2.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
+      playAlertSound();
+    } else {
+      statusElement.classList.add('status-empty');
+      statusElement.classList.remove('status-full');
+      markerTongSampah2.bindPopup(`
+        <div style="font-family: Arial, sans-serif; padding: 10px;">
+          <h3 style="margin: 0; font-size: 18px; color: green;">Tong Sampah 2 Kosong</h3>
+          <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 2</p>
+          <p style="margin: 5px 0;">Status: <span style="color: green; font-weight: bold;">Kosong</span></p>
+        </div>
+      `);
+      markerTongSampah2.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
+    }
+  }
+
+  if (topic === 'tong_sampah_3/status') {
+    const statusElement = document.getElementById('statusTongSampah3');
+    statusElement.textContent = 'Status: ' + status;
+    if (status === 'Sudah Penuh') {
+      statusElement.classList.add('status-full');
+      statusElement.classList.remove('status-empty');
+      markerTongSampah3.bindPopup(`
+        <div style="font-family: Arial, sans-serif; padding: 10px;">
+          <h3 style="margin: 0; font-size: 18px; color: red;">Tong Sampah 3 Penuh</h3>
+          <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 3</p>
+          <p style="margin: 5px 0;">Status: <span style="color: red; font-weight: bold;">Penuh</span></p>
+          <p style="margin: 5px 0;">Mohon segera kosongkan tong sampah ini.</p>
+        </div>
+      `).openPopup();
+      markerTongSampah3.setIcon(L.divIcon({ className: 'marker-full', html: '🔴' }));
+      playAlertSound();
+    } else {
+      statusElement.classList.add('status-empty');
+      statusElement.classList.remove('status-full');
+      markerTongSampah3.bindPopup(`
+        <div style="font-family: Arial, sans-serif; padding: 10px;">
+          <h3 style="margin: 0; font-size: 18px; color: green;">Tong Sampah 3 Kosong</h3>
+          <p style="margin: 5px 0;">Alamat: Jl. Contoh Lokasi 3</p>
+          <p style="margin: 5px 0;">Status: <span style="color: green; font-weight: bold;">Kosong</span></p>
+        </div>
+      `);
+      markerTongSampah3.setIcon(L.divIcon({ className: 'marker-empty', html: '🟢' }));
+    }
+  }
+});
+
 
     // Fungsi untuk memutar suara alert
     function playAlertSound() {
       const audio = new Audio('pilager.mp3');
       audio.play();
     }
+ </script>
+ <script>
+// Mengambil elemen link
+document.getElementById("showLocationButton1").addEventListener("click", function() {
+  // Ganti tampilan peta ke lokasi tong sampah 1 dan tampilkan popup
+  map.setView(lokasiTongSampah1, 20); // Koordinat untuk Tong Sampah 1
+  markerTongSampah1.openPopup(); // Menampilkan popup untuk Tong Sampah 1
+});
+
+document.getElementById("showLocationButton2").addEventListener("click", function() {
+  // Ganti tampilan peta ke lokasi tong sampah 2 dan tampilkan popup
+  map.setView(lokasiTongSampah2, 20); // Koordinat untuk Tong Sampah 2
+  markerTongSampah2.openPopup(); // Menampilkan popup untuk Tong Sampah 2
+});
+
+document.getElementById("showLocationButton3").addEventListener("click", function() {
+  // Ganti tampilan peta ke lokasi tong sampah 3 dan tampilkan popup
+  map.setView(lokasiTongSampah3, 20); // Koordinat untuk Tong Sampah 3
+  markerTongSampah3.openPopup(); // Menampilkan popup untuk Tong Sampah 3
+});
+
+  // ------------
+//   function showTongSampah(id) {
+//   let lokasi, marker;
+
+//   switch (id) {
+//     case 1:
+//       lokasi = lokasiTongSampah1;
+//       marker = markerTongSampah1;
+//       break;
+//     case 2:
+//       lokasi = lokasiTongSampah2;
+//       marker = markerTongSampah2;
+//       break;
+//     case 3:
+//       lokasi = lokasiTongSampah3;
+//       marker = markerTongSampah3;
+//       break;
+//     default:
+//       console.error('ID tong sampah tidak valid');
+//       return;
+//   }
+
+//   // Pindahkan peta ke lokasi tong sampah
+//   map.setView(lokasi, 18);
+
+//   // Tampilkan pop-up pada marker
+//   marker.openPopup();
+// }
+
  </script>
  <!-- js tema opsional -->
 <script src="assets/js/tema.js"></script>

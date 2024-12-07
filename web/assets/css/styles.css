@@ -96,6 +96,13 @@ header h1 {
 }
 
 /* Map Container */
+.map-lokasi{
+  color: #000000;
+  background-color: #46c735;
+  text-align: center;
+  padding: 4px;
+  border-radius: 0px 0px 10px 0px;
+}
 .marker-full {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.687);
   background-color: rgb(139, 1, 1);
@@ -134,7 +141,52 @@ header h1 {
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
+/*  */
+/* Gaya untuk pop-up */
+.leaflet-popup-content {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 5px;
+  color: #333;
+  text-align: left;
+}
 
+.leaflet-popup-content h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  color: #4CAF50;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+}
+
+.leaflet-popup-content p {
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+.status-empty-js {
+  color: green;
+  font-weight: bold;
+}
+
+.status-full-js {
+  color: red;
+  font-weight: bold;
+}
+
+/* Untuk membuat pop-up lebih menarik */
+.leaflet-popup-content-wrapper {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-tip {
+  background-color: #f9f9f9;
+}
+
+/*  */
 .status-full {
   background-color: #ff0000;
 }

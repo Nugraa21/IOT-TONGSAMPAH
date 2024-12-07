@@ -16,12 +16,23 @@
             margin: 0;
         }
         .container {
-            max-width: 800px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            max-width: 1200px;
             margin: 20px auto;
-            padding: 20px;
+            gap: 20px;
+        }
+        .left-container, .right-container {
+            flex: 1;
             background: white;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .left-container {
+            overflow: scroll;
+            max-height: 600px;
         }
         .form-container {
             margin-bottom: 20px;
@@ -73,9 +84,6 @@
         .btn-success {
             background-color: #28a745;
         }
-        .status-container {
-            margin-top: 20px;
-        }
         .status-container h3 {
             margin-bottom: 10px;
         }
@@ -104,56 +112,61 @@
 </head>
 <body>
     <div class="container">
-        <!-- Form Tong Sampah 1 -->
-        <div class="form-container" id="form-tong-1">
-            <h2>Tong Sampah 1</h2>
-            <label for="input-tong-1">Input Data Manual:</label>
-            <input type="text" id="input-tong-1" placeholder="Masukkan data untuk tong sampah 1">
-            <div class="button-group">
-                <button class="btn-primary" onclick="publishData('tong_sampah_1/status', 'input-tong-1')">Kirim Manual</button>
-                <button class="btn-warning" onclick="sendMessage('tong_sampah_1/status', 'Sudah Penuh')">Sudah Penuh</button>
-                <button class="btn-success" onclick="sendMessage('tong_sampah_1/status', 'Kosong')">Kosong</button>
+        <!-- Log Container -->
+        <div class="left-container">
+            <div class="status-container" id="status-container">
+                <h3>Log Status</h3>
+                <button class="clear-button" onclick="clearLog()">Clear Log</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Topik</th>
+                            <th>Pesan</th>
+                            <th>Tanggal & Waktu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="status-list"></tbody>
+                </table>
             </div>
         </div>
 
-        <!-- Form Tong Sampah 2 -->
-        <div class="form-container" id="form-tong-2">
-            <h2>Tong Sampah 2</h2>
-            <label for="input-tong-2">Input Data Manual:</label>
-            <input type="text" id="input-tong-2" placeholder="Masukkan data untuk tong sampah 2">
-            <div class="button-group">
-                <button class="btn-primary" onclick="publishData('tong_sampah_2/status', 'input-tong-2')">Kirim Manual</button>
-                <button class="btn-warning" onclick="sendMessage('tong_sampah_2/status', 'Sudah Penuh')">Sudah Penuh</button>
-                <button class="btn-success" onclick="sendMessage('tong_sampah_2/status', 'Kosong')">Kosong</button>
+        <!-- Form Container -->
+        <div class="right-container">
+            <!-- Form Tong Sampah 1 -->
+            <div class="form-container" id="form-tong-1">
+                <h2>Tong Sampah 1</h2>
+                <label for="input-tong-1">Input Data Manual:</label>
+                <input type="text" id="input-tong-1" placeholder="Masukkan data untuk tong sampah 1">
+                <div class="button-group">
+                    <button class="btn-primary" onclick="publishData('tong_sampah_1/status', 'input-tong-1')">Kirim Manual</button>
+                    <button class="btn-warning" onclick="sendMessage('tong_sampah_1/status', 'Sudah Penuh')">Sudah Penuh</button>
+                    <button class="btn-success" onclick="sendMessage('tong_sampah_1/status', 'Kosong')">Kosong</button>
+                </div>
             </div>
-        </div>
 
-        <!-- Form Tong Sampah 3 -->
-        <div class="form-container" id="form-tong-3">
-            <h2>Tong Sampah 3</h2>
-            <label for="input-tong-3">Input Data Manual:</label>
-            <input type="text" id="input-tong-3" placeholder="Masukkan data untuk tong sampah 3">
-            <div class="button-group">
-                <button class="btn-primary" onclick="publishData('tong_sampah_3/status', 'input-tong-3')">Kirim Manual</button>
-                <button class="btn-warning" onclick="sendMessage('tong_sampah_3/status', 'Sudah Penuh')">Sudah Penuh</button>
-                <button class="btn-success" onclick="sendMessage('tong_sampah_3/status', 'Kosong')">Kosong</button>
+            <!-- Form Tong Sampah 2 -->
+            <div class="form-container" id="form-tong-2">
+                <h2>Tong Sampah 2</h2>
+                <label for="input-tong-2">Input Data Manual:</label>
+                <input type="text" id="input-tong-2" placeholder="Masukkan data untuk tong sampah 2">
+                <div class="button-group">
+                    <button class="btn-primary" onclick="publishData('tong_sampah_2/status', 'input-tong-2')">Kirim Manual</button>
+                    <button class="btn-warning" onclick="sendMessage('tong_sampah_2/status', 'Sudah Penuh')">Sudah Penuh</button>
+                    <button class="btn-success" onclick="sendMessage('tong_sampah_2/status', 'Kosong')">Kosong</button>
+                </div>
             </div>
-        </div>
 
-        <!-- Status Container -->
-        <div class="status-container" id="status-container">
-            <h3>Log Status</h3>
-            <button class="clear-button" onclick="clearLog()">Clear Log</button>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nama Topik</th>
-                        <th>Pesan</th>
-                        <th>Tanggal & Waktu</th>
-                    </tr>
-                </thead>
-                <tbody id="status-list"></tbody>
-            </table>
+            <!-- Form Tong Sampah 3 -->
+            <div class="form-container" id="form-tong-3">
+                <h2>Tong Sampah 3</h2>
+                <label for="input-tong-3">Input Data Manual:</label>
+                <input type="text" id="input-tong-3" placeholder="Masukkan data untuk tong sampah 3">
+                <div class="button-group">
+                    <button class="btn-primary" onclick="publishData('tong_sampah_3/status', 'input-tong-3')">Kirim Manual</button>
+                    <button class="btn-warning" onclick="sendMessage('tong_sampah_3/status', 'Sudah Penuh')">Sudah Penuh</button>
+                    <button class="btn-success" onclick="sendMessage('tong_sampah_3/status', 'Kosong')">Kosong</button>
+                </div>
+            </div>
         </div>
     </div>
 
