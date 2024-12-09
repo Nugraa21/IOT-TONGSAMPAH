@@ -1,3 +1,4 @@
+```
 #include <WiFi.h>
 #include <PubSubClient.h>
 
@@ -87,3 +88,4 @@ void reconnect() {
     }
   }
 }
+```
