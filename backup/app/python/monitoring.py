@@ -69,7 +69,7 @@ label_tong_sampah_2.grid(row=2, column=0, pady=5, padx=10, sticky="w")
 # Label untuk status alert
 status_label = tk.Label(main_frame, text="Status: Monitoring...", font=("Arial", 12), fg="blue", bg="#ffffff")
 status_label.grid(row=3, column=0, columnspan=2, pady=10)
-
+s
 # Button untuk refresh atau menghubungkan kembali (opsional)
 def reconnect():
     try:
@@ -90,3 +90,5 @@ start_mqtt_loop()
 
 # Start the Tkinter main loop
 root.mainloop()
+
+# data acces
