@@ -90,5 +90,3 @@ start_mqtt_loop()
 
 # Start the Tkinter main loop
 root.mainloop()
-
-# data acces
