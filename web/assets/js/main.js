@@ -49,6 +49,7 @@
         }
       }
 
+      
       if (topic === 'tong_sampah_2/status') {
         const statusElement = document.getElementById('statusTongSampah2');
         statusElement.textContent = 'Status: ' + status;
