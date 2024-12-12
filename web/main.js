@@ -1,6 +1,6 @@
 // Lokasi tong sampah
 const lokasiTongSampah = [
-  { id: 1, lokasi: [-7.82062992849643, 110.42654669574745], nama: 'Tong Sampah 1' },
+  { id: 1, lokasi: [-7.82062992849643, 110.42654669574745], nama: 'Rumah Ludang' },
   { id: 2, lokasi: [-7.820135382837104, 110.42666630956253], nama: 'Tong Sampah 2' },
   { id: 3, lokasi: [-7.821398025909336, 110.42598761336608], nama: 'Tong Sampah 3' }
 ];
