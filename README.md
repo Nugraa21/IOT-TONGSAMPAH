@@ -6,8 +6,8 @@
 1. Clone repositori:
    ```bash
    git clone https://github.com/yourusername/IoT-Smart-Trash-Bin.git
-
-               
+ 
+                 
 Proyek ini bertujuan untuk membuat tong sampah pintar yang dapat memantau kapasitasnya dan mengirimkan data ke cloud untuk pengelolaan sampah yang lebih efisien. Tong sampah yang dilengkapi IoT ini menggunakan berbagai sensor untuk mendeteksi tingkat sampah dan memberi notifikasi kepada pengguna saat tong sampah sudah penuh.
 
 ## Fitur
