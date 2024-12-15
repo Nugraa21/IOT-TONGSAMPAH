@@ -34,6 +34,7 @@ const markers = lokasiTongSampah.map(tongSampah => {
   return createMarker(tongSampah);
 });
 
+// 
 // Inisialisasi MQTT
 const client = mqtt.connect('ws://broker.mqttdashboard.com:8000/mqtt');
 
