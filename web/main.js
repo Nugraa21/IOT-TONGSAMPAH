@@ -61,7 +61,7 @@ client.on('message', function (topic, message) {
       statusElement.classList.remove('status-empty');
       marker.bindPopup(`
           <div style="font-family: Arial, sans-serif; padding: 10px;">
-              <h3 style="margin: 0; font-size: 18px; color: red;">${marker.getPopup().getContent().match(/<h3.*?>(.*?)<\/h3>/)[1]} Penuh</h3>
+              <h3 style="margin: 0; font-size: 18px; color: red;">Penuh</h3>
               <p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah, Kabupaten Sleman, Daerah Istimewa</p>
               <p style="margin: 5px 0;">Status: <span style="color: red; font-weight: bold;">Penuh</span></p>
               <p style="margin: 5px 0;">Mohon segera kosongkan tong sampah ini.</p>
@@ -74,7 +74,7 @@ client.on('message', function (topic, message) {
       statusElement.classList.remove('status-full');
       marker.bindPopup(`
           <div style="font-family: Arial, sans-serif; padding: 10px;">
-              <h3 style="margin: 0; font-size: 18px; color: green;">${marker.getPopup().getContent().match(/<h3.*?>(.*?)<\/h3>/)[1]} Kosong</h3>
+              <h3 style="margin: 0; font-size: 18px; color: green;">Kosong</h3>
               <p style="margin: 5px 0;">Alamat: Sekarsuli, Sendangtirto, Kec. Berbah, Kabupaten Sleman, Daerah Istimewa</p>
               <p style="margin: 5px 0;">Status: <span style="color: green; font-weight: bold;">Kosong</span></p>
           </div>
