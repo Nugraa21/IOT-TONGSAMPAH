@@ -46,13 +46,13 @@ void loop() {
 
   // Tentukan status berdasarkan jarak
   String status;
-  if (distance > 10) {
+  if (distance > 15) {
     status = "Kosong";
     digitalWrite(buzzerPin, LOW);
-  } else if (distance > 5 && distance <= 20) {
+  } else if (distance > 10 && distance <= 20) {
     status = "Hampir Penuh";
     digitalWrite(buzzerPin, LOW);
-  } else if (distance <= 5) {
+  } else if (distance <= 8) {
     status = "Sudah Penuh";
     digitalWrite(buzzerPin, HIGH);
   }
