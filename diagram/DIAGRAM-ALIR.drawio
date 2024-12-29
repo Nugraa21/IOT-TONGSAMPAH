@@ -1,28 +1,31 @@
 <mxfile host="65bd71144e">
     <diagram id="ga-QkZRKflgJFM5EuJlA" name="Page-1">
-        <mxGraphModel dx="1159" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1453" dy="1104" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="6" value="" style="edgeStyle=none;html=1;strokeWidth=1;strokeColor=#000000;" edge="1" parent="1" source="2" target="4">
+                <mxCell id="36" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="10" width="1010" height="820" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="edgeStyle=none;html=1;strokeWidth=1;strokeColor=#000000;" parent="1" source="2" target="4" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="Mulai program&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+                <mxCell id="2" value="Mulai program&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
                     <mxGeometry x="320" y="80" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="4" target="5">
+                <mxCell id="7" value="" style="edgeStyle=none;html=1;" parent="1" source="4" target="5" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="Instalasi" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=0;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                <mxCell id="4" value="Instalasi" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=0;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
                     <mxGeometry x="320" y="180" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="5" target="8">
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;" parent="1" source="5" target="8" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="WiFi Manager&lt;br&gt;mqtt" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=0;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                <mxCell id="5" value="WiFi Manager&lt;br&gt;mqtt" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=0;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
                     <mxGeometry x="320" y="270" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="5">
+                <mxCell id="11" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="8" target="5" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="280" y="440"/>
@@ -30,51 +33,51 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="13" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="8" target="12">
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" parent="1" source="8" target="12" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="Apakah terhubung" style="rhombus;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+                <mxCell id="8" value="Apakah terhubung" style="rhombus;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
                     <mxGeometry x="305" y="390" width="150" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="12" target="14">
+                <mxCell id="15" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" parent="1" source="12" target="14" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="Masuk ke Loop&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-10;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                <mxCell id="12" value="Masuk ke Loop&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-10;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
                     <mxGeometry x="310" y="525" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="14" target="16">
+                <mxCell id="17" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" parent="1" source="14" target="16" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" value="Mengukur jarak" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+                <mxCell id="14" value="Mengukur jarak" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-20;fillColor=#d10478;fontColor=#ffffff;strokeColor=#6F0000;" parent="1" vertex="1">
                     <mxGeometry x="310" y="620" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="16" target="18">
+                <mxCell id="22" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" parent="1" source="16" target="18" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" style="edgeStyle=none;html=1;entryX=0.093;entryY=0.428;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#000000;" edge="1" parent="1" source="16" target="20">
+                <mxCell id="24" style="edgeStyle=none;html=1;entryX=0.093;entryY=0.428;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#000000;" parent="1" source="16" target="20" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="540" y="569"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="25" style="edgeStyle=none;html=1;entryX=0.069;entryY=0.553;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#000000;" edge="1" parent="1" source="16" target="19">
+                <mxCell id="25" style="edgeStyle=none;html=1;entryX=0.069;entryY=0.553;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#000000;" parent="1" source="16" target="19" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="540" y="715"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="16" value="Keluaran" style="rhombus;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+                <mxCell id="16" value="Keluaran" style="rhombus;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
                     <mxGeometry x="500" y="605" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="18" target="26">
+                <mxCell id="27" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" parent="1" source="18" target="26" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="Hampir Penuh" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+                <mxCell id="18" value="Hampir Penuh" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" parent="1" vertex="1">
                     <mxGeometry x="610" y="620" width="110" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" style="edgeStyle=none;html=1;entryX=0.011;entryY=0.49;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#000000;" edge="1" parent="1" source="19" target="26">
+                <mxCell id="29" style="edgeStyle=none;html=1;entryX=0.011;entryY=0.49;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#000000;" parent="1" source="19" target="26" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="740" y="710"/>
@@ -82,10 +85,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="19" value="Kosong" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+                <mxCell id="19" value="Kosong" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" parent="1" vertex="1">
                     <mxGeometry x="600" y="690" width="110" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#000000;" edge="1" parent="1" source="20" target="26">
+                <mxCell id="28" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#000000;" parent="1" source="20" target="26" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="750" y="570"/>
@@ -93,25 +96,25 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="20" value="Penuh" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+                <mxCell id="20" value="Penuh" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" parent="1" vertex="1">
                     <mxGeometry x="620" y="550" width="110" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="26" target="30">
+                <mxCell id="31" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" parent="1" source="26" target="30" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="Kirim ke MQTT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                <mxCell id="26" value="Kirim ke MQTT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
                     <mxGeometry x="770" y="615" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="Ulagi lopnya" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+                <mxCell id="30" value="Ulagi lopnya" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
                     <mxGeometry x="770" y="490" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+                <mxCell id="33" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="380" y="240" as="sourcePoint"/>
                         <mxPoint x="380" y="270" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="34" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#000000;" edge="1" parent="1">
+                <mxCell id="34" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#000000;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="305" y="440" as="sourcePoint"/>
                         <mxPoint x="320" y="300" as="targetPoint"/>
@@ -121,7 +124,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="35" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+                <mxCell id="35" value="" style="edgeStyle=none;html=1;strokeColor=#000000;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="380" y="330" as="sourcePoint"/>
                         <mxPoint x="380" y="390" as="targetPoint"/>
