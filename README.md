@@ -45,7 +45,12 @@ Proyek ini bertujuan untuk membuat tong sampah pintar yang dapat memantau kapasi
 
 ## Diagram 
 
-![Alt text](img/image.png)
+### Diagram Block 
+
+![Alt text](img/DIAGRAM-BLOCK.png)
+
+### Diagram alir 
+![Alt text](img/DIAGRAM-ALIR.png)
 
 
 ## Diagram 
